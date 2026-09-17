@@ -1,0 +1,5 @@
+# демонстрационный скрипт
+ls -la
+cd "My Documents"
+jsdhbfuwhdv
+exit
