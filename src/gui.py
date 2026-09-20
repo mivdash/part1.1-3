@@ -2,10 +2,12 @@ import tkinter as tk # для отрисовки окон, кнопок, пол�
 import getpass # узнает имя пользователя для заголовка
 import socket # узнать имя компютера для заголовка
 from src.parser import razobrat_komandu
+from src.vfs import sohranit_vfs # сохранить VFS из памяти на диск
 
 class Prilojenie:
-    def __init__(self, okno):
+    def __init__(self, okno, vfs=None):
         self.okno = okno
+        self.vfs = vfs  # дерево виртуальной файловой системы в памяти (или None, если не загружена)
         self._nastroit_zagolovok()
         self._sozdat_elementy()
 
@@ -49,5 +51,13 @@ class Prilojenie:
             self._vyvesti(f"ls stub: args={argumenty}")
         elif komanda == "cd":
             self._vyvesti(f"cd stub: args={argumenty}")
+        elif komanda == "vfs-save":
+            if not self.vfs:
+                self._vyvesti("Error: VFS not loaded (use --vfs-path)")
+            elif not argumenty:
+                self._vyvesti("Error: vfs-save requires a path")
+            else:
+                sohranit_vfs(self.vfs, argumenty[0])
+                self._vyvesti(f"VFS saved to {argumenty[0]}")
         else:
             self._vyvesti(f"Error: unknown command '{komanda}'")
