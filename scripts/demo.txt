@@ -1,11 +1,9 @@
-# демонстрация команд этапа 4
+# демонстрация команды rmdir
 ls
 cd docs
 ls
 cd ..
+rmdir docs
 ls
-cd nesuschestvuyuschaya_papka
-echo Privet mir
-uptime
-clear
+rmdir nesuschestvuyuschaya_papka
 exit

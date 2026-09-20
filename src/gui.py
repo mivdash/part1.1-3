@@ -104,6 +104,33 @@ class Prilojenie:
             self._vyvesti(f"cd: {imya}: not a directory")
         else:
             self.tekuschiy_put = noviy_put
+    def _komanda_rmdir(self, argumenty):
+        if not self.vfs:
+            self._vyvesti("Error: VFS not loaded (use --vfs-path)")
+            return
+
+        if not argumenty:
+            self._vyvesti("Error: rmdir requires a name")
+            return
+
+        imya = argumenty[0]
+        tekuschaya_papka = self._naiti_uzel(self.tekuschiy_put)
+
+        naiden = None
+        for rebenok in tekuschaya_papka["deti"]:
+            if rebenok["imya"] == imya:
+                naiden = rebenok
+                break
+
+        if naiden is None:
+            self._vyvesti(f"rmdir: {imya}: no such file or directory")
+        elif naiden["tip"] != "papka":
+            self._vyvesti(f"rmdir: {imya}: not a directory")
+        elif naiden["deti"]:
+            self._vyvesti(f"rmdir: {imya}: directory not empty")
+        else:
+            tekuschaya_papka["deti"].remove(naiden)
+            self._vyvesti(f"rmdir: {imya} removed")
 
     def _komanda_uptime(self):
         proshlo_sekund = time.time() - self.vremya_starta
@@ -135,6 +162,8 @@ class Prilojenie:
             self._komanda_clear()
         elif komanda == "echo":
             self._vyvesti(" ".join(argumenty))
+        elif komanda == "rmdir":
+            self._komanda_rmdir(argumenty)
         elif komanda == "vfs-save":
             if not self.vfs:
                 self._vyvesti("Error: VFS not loaded (use --vfs-path)")
