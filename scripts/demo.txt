@@ -1,4 +1,11 @@
-# демонстрационный скрипт
-ls -la
-cd "My Documents"
-jsdhbfuwhdv
+# демонстрация команд этапа 4
+ls
+cd docs
+ls
+cd ..
+ls
+cd nesuschestvuyuschaya_papka
+echo Privet mir
+uptime
+clear
+exit
