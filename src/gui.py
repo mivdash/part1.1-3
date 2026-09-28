@@ -1,7 +1,9 @@
-import tkinter as tk # для отрисовки окон, кнопок, полей
-import getpass # узнает имя пользователя для заголовка
-import socket # узнать имя компютера для заголовка
+import tkinter as tk
+import getpass
+import socket
+
 from src.parser import razobrat_komandu
+
 
 class Prilojenie:
     def __init__(self, okno):
@@ -15,17 +17,16 @@ class Prilojenie:
         self.okno.title(f"Emulyator-[{polzovatel}@{imya_hosta}]")
 
     def _sozdat_elementy(self):
-        self.oblast_vyvoda = tk.Text(self.okno, state=tk.DISABLED) # окно многострочное для чтения
-        self.oblast_vyvoda.pack(fill=tk.BOTH, expand=True) # расположить виджеты друг под другом , растянуть и занять всё свободное место
+        self.oblast_vyvoda = tk.Text(self.okno, state=tk.DISABLED)
+        self.oblast_vyvoda.pack(fill=tk.BOTH, expand=True)
 
-        self.stroka_vvoda = tk.Entry(self.okno) #  окно для ввода односточное
-        self.stroka_vvoda.pack(fill=tk.X) #растяжка по ширине
-        self.stroka_vvoda.bind("<Return>", self._pri_nazhatii_enter) # приявзка ввода к функции
-
+        self.stroka_vvoda = tk.Entry(self.okno)
+        self.stroka_vvoda.pack(fill=tk.X)
+        self.stroka_vvoda.bind("<Return>", self._pri_nazhatii_enter)
 
     def _vyvesti(self, tekst):
         self.oblast_vyvoda.config(state=tk.NORMAL)
-        self.oblast_vyvoda.insert(tk.END, tekst + "\n") # вставляем текст в конец
+        self.oblast_vyvoda.insert(tk.END, tekst + "\n")
         self.oblast_vyvoda.config(state=tk.DISABLED)
         self.oblast_vyvoda.see(tk.END)
 
