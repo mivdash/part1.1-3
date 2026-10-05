@@ -1,0 +1,5 @@
+# proverka
+ls -la
+cd "My Documents"
+cd My Documents
+kadjfldalddknv
