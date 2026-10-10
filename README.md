@@ -35,15 +35,12 @@
 
 * --vfs-path путь к папке виртуальной файловой системы.
 * --script путь к стартовому скрипту. Пример: scripts/demo.txt.
-* Оба параметра необязательные.
 
 ## 3. Сборка и тесты
 
-* Сборка не нужна. Нужен только Python 3 с tkinter.
 * Запуск без параметров: python main.py
 * Запуск с параметрами: python main.py --vfs-path vfs --script scripts/demo.txt
 * Запуск на Windows: run.bat --script scripts/demo.txt
-* Папка tests пока пустая, автоматических тестов нет. Проверка делается вручную в окне или запуском scripts/demo.txt.
 
 ## 4. Примеры использования
 
@@ -52,24 +49,3 @@
 ```
 python main.py --vfs-path vfs --script scripts/demo.txt
 ```
-
-Вывод в консоль при запуске:
-
-```
-Parametry zapuska:
-  vfs-path = vfs
-  script = scripts/demo.txt
-```
-
-Команды в окне:
-
-```
-> ls -la
-ls stub: args=['-la']
-> cd "My Documents"
-cd stub: args=['My Documents']
-> abc
-Error: unknown command 'abc'
-```
-
-Команда exit закрывает окно.
