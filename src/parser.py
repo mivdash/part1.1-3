@@ -1,4 +1,5 @@
-import shlex # разбивает строку на слова , если разделены пробелом то неразделяютс пробелом ещё
+import shlex
+
 
 def razobrat_komandu(text):
     if not text.strip():
