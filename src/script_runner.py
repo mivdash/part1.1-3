@@ -1,9 +1,9 @@
 def prochitat_skript(put):
     stroki = []
-    with open(put, "r", encoding="utf-8") as f: # правильное чтение букв
+    with open(put, "r", encoding="utf-8") as f:
         for stroka in f:
             stroka = stroka.strip()
-            eto_nuzhnaya_stroka = (stroka != "") and (not stroka.startswith("#"))
-            if eto_nuzhnaya_stroka:
+            eto_komanda = stroka != "" and not stroka.startswith("#")
+            if eto_komanda:
                 stroki.append(stroka)
     return stroki
